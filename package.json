@@ -1,0 +1,26 @@
+{
+  "name": "restfulapi-learning",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/Arynsingh/RestfulApi-learning#readme",
+  "bugs": {
+    "url": "https://github.com/Arynsingh/RestfulApi-learning/issues"
+  },
+  "module": "Node",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arynsingh/RestfulApi-learning.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "expres": "^0.0.5",
+    "express": "^5.2.1"
+  }
+}

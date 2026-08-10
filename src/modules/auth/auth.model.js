@@ -19,15 +19,19 @@ import mongoose from "mongoose"
         type : String,
         required:[true,"Password is required"],
         minlength:8,
-        maxlength : 30
+        maxlength : 30,
+        select : false
     },
     role : {
         type : String,
-        enum : ["user","customer"],
-        default : "customer"
-    }
-
- })
+        enum : ["user","customer"],//for enum is default is compulsary  
+        default : "customer "
+    },
+    verifactionToken : {type : String , select : false},
+    refreshToken : {type : String , select : false},
+    resetPasswordtoken : {type: String,select:false},
+    resetpaswordExpires : {type : Date, select : false}
+ }),{timestamps : true /*always go as second argument by making it true it gets created at &  updated at*/}
 
 
  export default mongoose.model("User",userSchema)// in db it will be saved as users 

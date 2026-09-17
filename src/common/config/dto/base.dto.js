@@ -8,7 +8,7 @@ class BaseDto{
         stripUnknown : true // remove all the filed that is not needed
     })
 
-    if(errpr){
+    if(error){
         const error = error.details.map((d)=> d.message)
         return {error:error,value: null}
     }

@@ -27,7 +27,7 @@ import mongoose from "mongoose"
         enum : ["user","customer"],//for enum is default is compulsary  
         default : "customer "
     },
-    verifactionToken : {type : String , select : false},
+    verifactionToken : {type : String , select : false},//select false will not return
     refreshToken : {type : String , select : false},
     resetPasswordtoken : {type: String,select:false},
     resetpaswordExpires : {type : Date, select : false}

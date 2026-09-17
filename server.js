@@ -2,6 +2,7 @@ import "dotenv/config"
 import app from "./src/app.js"
 import connectDB from "./src/common/config/db.js"
 
+const PORT = process.env.PORT || 5000 //now port will be automaticall taken from .env so we can use it without changing code and for other variable as well
 
 const start = async ()=>{
     //connect to database
@@ -16,4 +17,3 @@ start().catch((err)=>{
     process.exit(1) // when we want to gracefully stop the server
 })
 
-const PORT = process.env.PORT || 5000 //now port will be automaticall taken from .env so we can use it without changing code and for other variable as well

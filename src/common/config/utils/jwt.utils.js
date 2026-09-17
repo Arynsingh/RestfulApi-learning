@@ -5,10 +5,25 @@ import crypto from "crypto"
 
 
 const generateAccessToken = (payload) =>{
-  jwt.sign(payload,process.env.JWT_ACCESS_SECRET,{
+  return jwt.sign(payload,process.env.JWT_ACCESS_SECRET,{
     expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m'
   })
 }
+
+const verifyAccessToken = (token)=>{
+  return jwt.verify(token,procces.env.JWT_ACCESS_SECRET) // returns true or false
+}
+
+const generateRefreshToken = (payload) =>{
+  return jwt.sign(payload,process.env.JWT_REFRESH_SECRET,{
+    expiresIn: process.env.JWT_REFRESH_EXPIRES_IN || "7d",
+  })
+}
+
+const verifyRefreshToken = (token)=>{
+  return jwt.verify(token,procces.env.JWT_REFRESH_SECRET) // returns true or false
+}
+
 
 const generateResetToken = () =>{
   const rawToken =   crypto.randomBytes(32).toString("hex")
@@ -22,5 +37,9 @@ const generateResetToken = () =>{
 }
 
 export {
-    generateResetToken
+    generateResetToken,
+    verifyAccessToken,
+    verifyRefreshToken,
+    generateAccessToken,
+    generateRefreshToken
 }

@@ -69,4 +69,21 @@ const refresh = async(token)=>{
     return {accessToken};
 
 }
+
+const logout = async(userId)=>{
+    await User.findByIdAndUpdate(userId,{refreshToken: null})
+}
+
+
+const forgotPassword = async ({email})=>{
+    const user = await User.findOne({email})
+    if(!user) throw ApiError.notFound("User doesnot exists")
+    const {rawToken,hashedToken} = generateResetToken()
+    user.resetPasswordtoken = hashedToken
+    user.resetpaswordExpires = Date.now() + 15 * 60 * 1000
+
+    await user.save();
+
+    //todo : mail
+}
 export {register}

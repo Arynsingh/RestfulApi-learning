@@ -19,6 +19,9 @@ class ApiErr extends Error{
      static  forbidden(message="forbidden"){
         return new ApiErr(403,message)
      }
+     static  notFound(message="Not found"){
+        return new ApiErr(404,message)
+     }
 }
 
 //throw new ApiErr.badRequest to use

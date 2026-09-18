@@ -4,6 +4,10 @@ import jwt from "jsonwebtoken"
 import crypto from "crypto"
 
 
+
+const hashToken = (token)=>  crypto.createHash("sha256").update(rawToken).digest("hex") //sha256 is a hasing algo
+
+
 const generateAccessToken = (payload) =>{
   return jwt.sign(payload,process.env.JWT_ACCESS_SECRET,{
     expiresIn: process.env.JWT_ACCESS_EXPIRES_IN || '15m'
@@ -23,6 +27,7 @@ const generateRefreshToken = (payload) =>{
 const verifyRefreshToken = (token)=>{
   return jwt.verify(token,procces.env.JWT_REFRESH_SECRET) // returns true or false
 }
+
 
 
 const generateResetToken = () =>{

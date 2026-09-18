@@ -16,6 +16,9 @@ class ApiErr extends Error{
      static  conflict(message="Conflict"){
         return new ApiErr(409,message)
      }
+     static  forbidden(message="forbidden"){
+        return new ApiErr(403,message)
+     }
 }
 
 //throw new ApiErr.badRequest to use

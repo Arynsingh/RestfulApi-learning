@@ -1,5 +1,6 @@
 import { required, string } from "joi"
 import mongoose from "mongoose"
+import bcrypt from "bcryptjs"
  const userSchema = new mongoose.Schema({
     name : {//instead of name : string ,by creating a object we can do this things 
         type : String, // why String not string
@@ -33,5 +34,18 @@ import mongoose from "mongoose"
     resetpaswordExpires : {type : Date, select : false}
  },{timestamps : true /*always go as second argument by making it true it gets created at and updated at */})
 
+ 
+
+userSchema.pre('Save', async function(next) {
+    if(!this.isModified("password")) return next();
+    this.password = await bcrypt.hash(this.password, 12)
+    next();
+
+    
+})
+
+userSchema.method.comparePassword = async function(clearTextPassword){
+    return bcrypt.compare(clearTextPassword,this.password);
+}
 
  export default mongoose.model("User",userSchema)// in db it will be saved as users 

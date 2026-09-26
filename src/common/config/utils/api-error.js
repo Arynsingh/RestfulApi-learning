@@ -25,4 +25,4 @@ class ApiErr extends Error{
 }
 
 //throw new ApiErr.badRequest to use
-export default ApiErr
+export default ApiError

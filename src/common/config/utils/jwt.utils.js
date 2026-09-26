@@ -5,7 +5,7 @@ import crypto from "crypto"
 
 
 
-const hashToken = (token)=>  crypto.createHash("sha256").update(rawToken).digest("hex") //sha256 is a hasing algo
+const hashToken = (token)=>  crypto.createHash("sha256").update(rawToken).digest("hex"); //sha256 is a hasing algo
 
 
 const generateAccessToken = (payload) =>{
@@ -37,7 +37,7 @@ const generateResetToken = () =>{
   .update(rawToken)
   .digest("hex")
 
-  return {rawToken,hashedTokena}
+  return {rawToken,hashedToken}
   
 }
 

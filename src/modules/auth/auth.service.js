@@ -82,8 +82,9 @@ const forgotPassword = async ({email})=>{
     user.resetPasswordtoken = hashedToken
     user.resetpaswordExpires = Date.now() + 15 * 60 * 1000
 
-    await user.save();
+    await user.save(); // save in database
 
-    //todo : mail
+
+    //todo : will do mail later
 }
 export {register}

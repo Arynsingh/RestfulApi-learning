@@ -5,5 +5,6 @@ const router = Router()
 
 
 router.post("/register",validate(RegisterDto),controller.register)
+router.post("/addblog",)
 
 export default router

@@ -13,7 +13,7 @@ const register = async({name,email,password,role}) =>{
         name,
         email,
         role,
-        password,
+        password,//paswords are hashed
         verificationToken : hashedToken
     })
     //Todo :   send an email to user with Token : RawToken
@@ -28,8 +28,12 @@ const register = async({name,email,password,role}) =>{
 const login = async({email,password})=>{
     const user = User.findOne(email).select("+password")
     if (!user) throw ApiError.unauthorized("Invalid email or password")
+    //comparing password and throwing error
+    const isMatch = await user.comparePassword(password);//returns boolean 
+    if(!isMatch) throw ApiError.unauthorized("Invalid email or password");
+    
 
-        //will check password'
+
     if(!user.isVerified){
             throw ApiError.forbidden("Please verify")
         }
@@ -87,4 +91,6 @@ const forgotPassword = async ({email})=>{
 
     //todo : will do mail later
 }
+
+
 export {register}
